@@ -31,14 +31,13 @@
         }
         @keyframes moveGrid { from { transform: translateY(0); } to { transform: translateY(40px); } }
 
-        /* Giriş ve Çıkış Splash Ekranları */
+        /* Splash Ekranları */
         .full-overlay {
             position: fixed; inset: 0; background: var(--bg-dark);
             z-index: 2000; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
             transition: opacity 0.5s ease;
         }
-
         #exit-splash { display: none; opacity: 0; }
 
         .loading-bar {
@@ -51,7 +50,7 @@
         }
         @keyframes loading { to { left: 100%; } }
 
-        /* Shutter Animasyonu */
+        /* Shutter (Kepenk) Animasyonu */
         .shutter {
             position: fixed; inset: 0; pointer-events: none; z-index: 500;
             display: flex; flex-direction: column;
@@ -112,7 +111,6 @@
             z-index: 600; flex-direction: column; justify-content: center; align-items: center;
         }
 
-        /* Yeni Kibar Buton */
         .final-btn {
             margin-top: 30px; padding: 18px 45px; background: transparent;
             color: var(--neon-green); border: 2px solid var(--neon-green);
@@ -212,12 +210,10 @@
             }, 500);
         }
 
-        // Çıkış Splash Screen Fonksiyonu
         function handleExit() {
             const exitSplash = document.getElementById('exit-splash');
             exitSplash.style.display = 'flex';
             setTimeout(() => exitSplash.style.opacity = '1', 10);
-            
             setTimeout(() => {
                 window.location.href = "https://instagram.com/sabanakcehre";
             }, 1800);
@@ -230,7 +226,8 @@
             particles = [];
             createFood();
             if(gameLoop) clearInterval(gameLoop);
-            gameLoop = setInterval(draw, 90);
+            // HIZ BURADA: 90 yerine 120 yapılarak yavaşlatıldı.
+            gameLoop = setInterval(draw, 120); 
         }
 
         function createFood() {
